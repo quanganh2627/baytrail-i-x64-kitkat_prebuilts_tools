@@ -23,7 +23,9 @@ Revision History
 typedef UINT16          CHAR16;
 typedef UINT8           CHAR8;
 typedef UINT8           BOOLEAN;
-
+#ifndef CONST
+   #define CONST const
+#endif
 #ifndef TRUE
     #define TRUE    ((BOOLEAN) 1)
     #define FALSE   ((BOOLEAN) 0)
@@ -110,6 +112,19 @@ typedef struct {
 typedef struct {
     UINT8                   Addr[32];
 } EFI_MAC_ADDRESS;
+
+typedef struct {
+    UINT32 ReceivedQueueTimeoutValue;
+    UINT32 TransmitQueueTimeoutValue;
+    UINT16 ProtocolTypeFilter;
+    BOOLEAN EnableUnicastReceive;
+    BOOLEAN EnableMulticastReceive;
+    BOOLEAN EnableBroadcastReceive;
+    BOOLEAN EnablePromiscuousReceive;
+    BOOLEAN FlushQueuesOnReset;
+    BOOLEAN EnableReceiveTimestamps;
+    BOOLEAN DisableBackgroundPolling;
+} EFI_MANAGED_NETWORK_CONFIG_DATA;
 
 //
 // Memory
